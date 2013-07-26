@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Campus Cloud Mobile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link type="text/css" rel="stylesheet" href="css/custom-theme.css">-->
+    <!-- <link type="text/css" rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile.structure-1.3.1.min.css"> -->
+    <link type="text/css" rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/jquery-bubble-popup-v3.css">
+    <link type="text/css" rel="stylesheet" href="css/jquery.mobile.simpledialog.css" />
+    <link type="text/css" rel="stylesheet" href="css/effects.css">
+    <link type="text/css" rel="stylesheet" href="css/mobile.css">
+    <link type="text/css" rel="stylesheet" href="css/iscroll/jquery.mobile.iscrollview.css">
+    <link type="text/css" rel="stylesheet" href="css/iscroll/jquery.mobile.iscrollview-pull.css">
+    <!-- Load dependent modules -->
+    <script type="text/javascript" src="lib/config/config.js"></script>
+    <script type="text/javascript" src="lib/js/logic/helper.js"></script>
+    <script type="text/javascript" src="lib/js/logic/keyboard.js"></script>
+    <script type="text/javascript" src="lib/js/logic/translator.js"></script>
+    <script type="text/javascript" src="lib/js/lang/de-de.js"></script>
+    <script type="text/javascript" src="lib/js/lang/en-us.js"></script>
+    <!--Load Interfaces -->
+    <script type="text/javascript" src="lib/js/interface/interface.js"></script>
+    <script type="text/javascript" src="lib/js/interface/backendInterface.js"></script>
+    <script type="text/javascript" src="lib/js/interface/backendDummy.js"></script>
+    <script type="text/javascript" src="lib/js/interface/backendOwncloud.js"></script>
+    <script type="text/javascript" src="lib/js/interface/backendSharepoint.js"></script>
+    <script type="text/javascript" src="lib/js/interface/frontendInterface.js"></script>
+    <script type="text/javascript" src="lib/js/interface/frontendDummy.js"></script>
+    <script type="text/javascript" src="lib/js/interface/frontendProduction.js"></script>
+
+    <!-- Weitere Plugins -->
+    <script type="text/javascript" src="lib/js/plugins/jquery-2.0.0.js"></script>
+    <script type="text/javascript" src="lib/js/plugins/jquery.rest.js"></script>
+    <script type="text/javascript" src="lib/js/plugins/webdav.js"></script>
+    <script type="text/javascript" src="lib/js/plugins/base64.js"></script>
+    <script type="text/javascript" src="lib/js/plugins/jquery.ajaxfileupload.js"></script>
+    <script type="text/javascript" src="lib/js/plugins/jquery.blockUI.js"></script>
+    <script src="lib/js/plugins/jquery.dateFormat-1.0.js"></script>
+
+    <!-- Mobile plugins -->
+    <script type="text/javascript" src="js/plugins/jquery.mobile-1.3.1.min.js"></script>
+    <script type="text/javascript" src="js/plugins/iscroll/iscroll.js"></script>
+    <script type="text/javascript" src="js/plugins/iscroll/jquery.mobile.iscrollview.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery.mobile.simpledialog2.js"></script>
+    <script type="text/javascript" src="js/plugins/BlobBuilder.js"></script>
+    <script type="text/javascript" src="js/plugins/FileSaver.js"></script>
+    <script src="http://debug.phonegap.com/target/target-script-min.js#dactabird"></script>
+    <script type="text/javascript" src="phonegap.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+
+</head>
+<body id="body">
+    <img id="myImage" src="" />
+    <div data-role="page" id="loginPage">
+        <div id="header" data-theme="b" data-role="header" data-position="fixed">
+            <h3 id="headerTextLogin" lang="TITLEHOME"></h3>
+        </div>
+        <div data-role="content">
+            <div data-role="fieldcontain">
+                <input name="" id="nameInput" lang="USERNAME" value="" type="text">
+            </div>
+            <div data-role="fieldcontain">
+                <input name="" id="passInput" lang="PASSWORD" value="" type="password">
+            </div>
+            <label for="uniSelectList" id="uniSelectLabel" lang="LOGINLABEL"></label>
+            <select id="uniSelectList" data-native-menu="true" data-placeholder="true" data-text="Test" class="styleList">
+                <!--            Items will be added dynamically -->
+            </select>
+            <button id="loginButton">Login</button>
+            <input type="checkbox" id="saveLogin" />
+            <label for="saveLogin" id="saveLoginLabel"></label>
+        </div>
+    </div>
+
+    <!-- Directory Page -->
+    <div data-role="page" id="directoryPage" data-add-back-btn="false">
+        <div id="header" data-theme="b" data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a data-role="button" id="backButton" data-icon="back" data-mini="true" data-iconpos="notext" class="context contextNormal contextSelection contextSelectionSingle contextSelectionMultiple contextMovePickTarget"></a>
+            <a data-role="button" id="menuButton" data-icon="grid" data-mini="true" data-iconpos="notext" class="context contextNormal contextSelection contextSelectionSingle contextSelectionMultiple"></a>
+
+            <div data-role="popup" data-theme="none" data-shadow="false" id="menuPopup">
+                <!-- Menu will be generated dynamically considering the context -->
+            </div>
+            <h2 lang="CHOOSEDIRECTORY" class="context contextMovePickTarget"></h2>
+            <h3 id="headerTextDirectory"></h3>
+        </div>
+        <div data-role="content">
+            <div data-role="fieldcontain" data-iscroll="scroller">
+                <div id="wrapper" class="myWrapperClass">
+                    <ul data-role="listview" id="directoryView">
+                        <!--  Items will be added dynamically -->
+                    </ul>
+                </div>
+            </div>
+            <div id="restorePopup" data-role="popup">
+                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                <div id="restorePopupHeader" data-theme="b" data-role="header">
+                    <h3 id="headerTextRestore" lang="TITLERESTORE"></h3>
+                </div>
+                <div data-role="content">
+                    <div data-role="fieldcontain" data-iscroll>
+                        <ul id="restoreVersionList" data-role="listview" data-filter="true" data-outodividers="true">
+                            <!-- Items will be added automatically -->
+                        </ul>
+                    </div>
+                </div>
+                <button id="restorePopupRestoreButton" lang="RESTORE"></button>
+            </div>
+
+            <div id="sharePopup" data-role="popup">
+                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                <div id="sharePopupHeader" data-theme="b" data-role="header">
+                    <h3 id="headerTextShare" lang="TITLESHARE"></h3>
+                </div>
+                <div data-role="content">
+                    <label id="shareLinkLabel" lang="LINKLABEL"></label>
+                    <input name="" id="shareLinkInput" value="" type="text">
+                    <div data-role="controlgroup">
+                        <input type="checkbox" id="shareReadCheckbox" data-mini="true"/>
+                        <label for="shareReadCheckbox" lang="READPERM"></label>
+
+                        <input type="checkbox" id="shareWriteCheckbox" data-mini="true"/>
+                        <label for="shareWriteCheckbox" lang="WRITEPERM"></label>
+
+                        <input type="checkbox" id="shareDeleteCheckbox" data-mini="true"/>
+                        <label for="shareDeleteCheckbox" lang="DELETEPERM"></label>
+
+                        <input type="checkbox" id="shareCreateCheckbox" data-mini="true"/>
+                        <label for="shareCreateCheckbox" lang="CREATEPERM"></label>
+
+                        <input type="checkbox" id="shareReshareCheckbox" data-mini="true"/>
+                        <label for="shareReshareCheckbox" lang="RESHAREPERM"></label>
+                    </div>
+                    <div data-role="fieldcontain" data-iscroll>
+                        <ul id="shareList" data-role="listview" data-filter="true" data-outodividers="true">
+                            <!-- Items will be added automatically -->
+                        </ul>
+                    </div>
+                </div>
+                <button id="sharePopupShareButton" lang="SETPERM"></button>
+
+            </div>
+            <div data-role="footer" data-position="fixed" data-tap-toggle="false" data-theme="b">
+                <!-- Navbar with single selection options -->
+                <div data-role="navbar" class="context contextSelectionSingle">
+                    <ul>
+                        <li><a href="#" id="navbarMoveButtonSingle" class="context contextSelectionSingle navbarMove" lang="MOVESHORT">Verschieben</a></li>
+                        <li><a href="#" id="navbarRenameButtonSingle" class="context contextSelectionSingle navbarRename" lang="RENAME">Umbenennen</a></li>
+                        <li><a href="#" id="navbarDeleteButtonSingle" class="context contextSelectionSingle navbarDelete" lang="DELETE">Löschen</a></li>
+                        <li><a href="#" id="navbarShareButtonSingle" class="context contextSelectionSingle navbarShare" lang="SHARE">Teilen</a></li>
+                        <li><a href="#" id="navbarRestoreButtonSingle" class="context contextSelectionSingle navbarRestore">Wiederherstellen</a></li>
+                    </ul>
+                </div>
+                <!-- /navbar -->
+
+                <!-- Navbar with multiple selection options -->
+                <div data-role="navbar" class="context contextSelectionMultiple">
+                    <ul>
+                        <li><a href="#" id="navbarMoveButtonMultiple" class="context contextSelectionMultiple navbarMove" lang="MOVESHORT">Verschieben</a></li>
+                        <li><a href="#" id="navbarDeleteButtonMultiple" class="context contextSelectionMultiple navbarDelete" lang="DELETE">Löschen</a></li>
+                    </ul>
+                </div>
+                <!-- /navbar -->
+
+                <div data-role="navbar" class="context contextMovePickTarget">
+                    <ul>
+                        <li><a href="#" id="movPickTargetOk" class="context contextMovePickTarget navbarMoveTarget" lang="MOVE">Verschieben</a></li>
+                        <li><a href="#" id="movePickTargetCancel" class="context contextMovePickTarget navbarCancel" lang="CANCEL">Abbrechen</a></li>
+                    </ul>
+                </div>
+                <!-- /navbar -->
+
+                <!-- Navbar with Confirmation only, momentan ungenutzt -->
+                <div data-role="navbar" class="context">
+                    <ul>
+                        <li><a href="#" id="navbarConfirmonlyButton" data-icon="check" data-iconpos="notext" class="context"></a></li>
+                    </ul>
+                </div>
+                <!-- /navbar -->
+            </div>
+        </div>
+</body>
+</html>

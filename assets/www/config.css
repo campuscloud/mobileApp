@@ -1,0 +1,53 @@
+﻿.config {
+    /* Ein Raster mit Zeilen für Befehle und Elemente definieren */
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 75px 1fr;
+    display: -ms-grid;
+    height: 100%;
+    width: 100%;
+}
+
+    .config .commandbar {
+        height: 100%;
+        list-style-type: none;
+        margin-left: 60px;
+        margin-right: 60px;
+        margin-top: 13px;
+        width: 100%;
+    }
+
+        .config .commandbar li {
+            display: inline;
+            font-family: "Segoe UI Light";
+            margin-left: 20px;
+            margin-right: 20px;
+            opacity: 0.6;
+        }
+
+            .config .commandbar li:hover {
+                opacity: 1.0;
+            }
+
+    .config .pickerlist {
+        -ms-grid-row: 2;
+        height: 100%;
+        width: 100%;
+    }
+
+        /* Diese Auswahl wird verwendet, damit "ui-dark/light.css" keine Änderungen
+           an ".win-surface" überschreiben kann. */
+        .config .pickerlist .win-horizontal.win-viewport .win-surface {
+            margin-bottom: 20px;
+            margin-left: 115px;
+            margin-right: 115px;
+        }
+
+        .config .pickerlist .item {
+            height: 130px;
+            width: 190px;
+        }
+
+            .config .pickerlist .item .item-image {
+                height: 130px;
+                width: 190px;
+            }

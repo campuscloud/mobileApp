@@ -1,0 +1,175 @@
+﻿.ui-input-text {
+    width: 100% !important;
+}
+
+#moveConfirmButton, #moveCancelButton {
+    margin:0 10px;
+}
+
+.context {
+    display: none;
+}
+/* IScroll */
+.ui-content {
+border-width: 0;
+overflow: hidden;
+overflow-x: hidden;
+padding: 0px;
+}
+
+#body {
+overflow: hidden;
+}
+
+.iscroll-wrapper {
+padding: 0px;
+height: inherit !important;
+overflow: visible !important;
+}
+
+.iscroll-scroller {
+    min-height: 0px !important;
+}
+/* Fix navbar position */
+header .ui-btn-icon-top .ui-icon, .ui-footer .ui-btn-icon-top .ui-icon, .ui-mini.ui-btn-icon-top .ui-icon, .ui-mini .ui-btn-icon-top .ui-icon {
+    top: 10px;
+}
+
+.ui-navbar.ui-mini {
+    margin: 5px 0;
+}
+
+/* Dialogues */
+.ui-simpledialog-container {
+    padding: 0;
+}
+
+.ui-simpledialog-controls > .ui-input-text {
+    margin: 5px;
+    padding: 0;
+    width: 95% !important;
+}
+
+    .ui-simpledialog-controls > .ui-input-text > .ui-simpledialog-input {
+        padding: .4em .4em;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        -o-box-shadow: none;
+        box-shadow: none;
+    }
+
+
+/* Checkbox */
+li.listElement .ui-block-a {
+    display: none;
+}
+
+/* Icon */
+#directoryView li.listElement .ui-block-b {
+    padding-left:1px;
+    width: 60px;
+    height:45px;
+    background-size: auto 45px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+
+/*#directoryView li.listElement .ui-block-c {
+    position: absolute;
+    padding-left: 70px;
+    width: 100%;
+}*/
+
+li.listElement.showCheckbox .ui-block-a { /* mit checkbox */
+    display: block; 
+    width:35px;
+}
+
+li.listElement.showCheckbox .ui-block-b {
+    padding-left:1px;
+}
+
+li.listElement.showCheckbox .ui-block-b img{
+    width: 48px;
+    height: 48px;
+}
+
+li.listElement.showCheckbox .ui-block-c {
+padding-left: 15px;
+width: 70%;
+}
+
+.fileIcon{
+    max-width: 40px;
+    max-height: 45px;
+}
+
+.selectionCheckbox {
+    width: 24px;
+    height: 24px;
+}
+
+
+/* Checkbox-Style */
+li {
+    padding-left: 20px;
+}
+
+#directoryView li .ui-li-heading {
+        margin: .4em 0;
+}
+
+#directoryView .ui-checkbox > label {
+    border: none;
+    background: transparent;
+    width: 30px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 10px;
+}
+
+    #directoryView .ui-checkbox > label .ui-btn-inner {
+        height: 30px;
+        padding: 0px;
+    }
+
+    #directoryView .ui-checkbox .ui-icon-checkbox-off,
+    #directoryView .ui-checkbox .ui-icon-checkbox-on {
+        left: 5px;
+    }
+
+#directoryView .ui-checkbox input[type=checkbox] {
+    visibility: hidden;
+}
+
+#shareList li {
+    padding-left: 10px;
+}
+
+    #shareList li .ui-li-heading {
+        margin: .4em 0;
+    }
+
+#shareList .ui-checkbox > label {
+    border: none;
+    background: transparent;
+    width: 30px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 10px;
+}
+
+    /*#shareList .ui-checkbox > label .ui-btn-inner {
+        height: 20px;
+        padding: 0px;
+    }*/
+
+    #shareList .ui-checkbox .ui-icon-checkbox-off,
+    #shareList .ui-checkbox .ui-icon-checkbox-on {
+        left: 5px;
+    }
+
+#shareList .ui-checkbox input[type=checkbox] {
+    visibility: hidden;
+}

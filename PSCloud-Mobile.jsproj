@@ -1,0 +1,569 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>2c545ee6-83d9-4d28-b826-bc9956137ee1</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0'">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).Default.props" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props" />
+  <PropertyGroup>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <TargetPlatformVersion>8.0</TargetPlatformVersion>
+    <DefaultLanguage>de-DE</DefaultLanguage>
+    <PackageCertificateKeyFile>PSCloud-Mobile_TemporaryKey.pfx</PackageCertificateKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppxManifest Include="package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="PSCloud-Mobile_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\www\config.css" />
+    <Content Include="assets\www\css\custom-theme.css" />
+    <Content Include="assets\www\css\custom-theme.min.css" />
+    <Content Include="assets\www\css\effects.css" />
+    <Content Include="assets\www\css\icheckmaster\all.css" />
+    <Content Include="assets\www\css\icheckmaster\flat\aero%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\aero.css" />
+    <Content Include="assets\www\css\icheckmaster\flat\aero.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\blue%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\blue.css" />
+    <Content Include="assets\www\css\icheckmaster\flat\blue.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\flat%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\flat.css" />
+    <Content Include="assets\www\css\icheckmaster\flat\flat.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\green%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\green.css" />
+    <Content Include="assets\www\css\icheckmaster\flat\green.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\grey%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\grey.css" />
+    <Content Include="assets\www\css\icheckmaster\flat\grey.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\orange%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\orange.css" />
+    <Content Include="assets\www\css\icheckmaster\flat\orange.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\pink%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\pink.css" />
+    <Content Include="assets\www\css\icheckmaster\flat\pink.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\purple%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\purple.css" />
+    <Content Include="assets\www\css\icheckmaster\flat\purple.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\red%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\red.css" />
+    <Content Include="assets\www\css\icheckmaster\flat\red.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\yellow%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\yellow.css" />
+    <Content Include="assets\www\css\icheckmaster\flat\yellow.png" />
+    <Content Include="assets\www\css\icheckmaster\flat\_all.css" />
+    <Content Include="assets\www\css\icheckmaster\futurico\futurico%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\futurico\futurico.css" />
+    <Content Include="assets\www\css\icheckmaster\futurico\futurico.png" />
+    <Content Include="assets\www\css\icheckmaster\line\aero.css" />
+    <Content Include="assets\www\css\icheckmaster\line\blue.css" />
+    <Content Include="assets\www\css\icheckmaster\line\green.css" />
+    <Content Include="assets\www\css\icheckmaster\line\grey.css" />
+    <Content Include="assets\www\css\icheckmaster\line\line%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\line\line.css" />
+    <Content Include="assets\www\css\icheckmaster\line\line.png" />
+    <Content Include="assets\www\css\icheckmaster\line\orange.css" />
+    <Content Include="assets\www\css\icheckmaster\line\pink.css" />
+    <Content Include="assets\www\css\icheckmaster\line\purple.css" />
+    <Content Include="assets\www\css\icheckmaster\line\red.css" />
+    <Content Include="assets\www\css\icheckmaster\line\yellow.css" />
+    <Content Include="assets\www\css\icheckmaster\line\_all.css" />
+    <Content Include="assets\www\css\icheckmaster\minimal\aero%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\aero.css" />
+    <Content Include="assets\www\css\icheckmaster\minimal\aero.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\blue%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\blue.css" />
+    <Content Include="assets\www\css\icheckmaster\minimal\blue.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\green%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\green.css" />
+    <Content Include="assets\www\css\icheckmaster\minimal\green.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\grey%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\grey.css" />
+    <Content Include="assets\www\css\icheckmaster\minimal\grey.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\minimal%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\minimal.css" />
+    <Content Include="assets\www\css\icheckmaster\minimal\minimal.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\orange%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\orange.css" />
+    <Content Include="assets\www\css\icheckmaster\minimal\orange.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\pink%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\pink.css" />
+    <Content Include="assets\www\css\icheckmaster\minimal\pink.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\purple%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\purple.css" />
+    <Content Include="assets\www\css\icheckmaster\minimal\purple.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\red%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\red.css" />
+    <Content Include="assets\www\css\icheckmaster\minimal\red.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\yellow%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\yellow.css" />
+    <Content Include="assets\www\css\icheckmaster\minimal\yellow.png" />
+    <Content Include="assets\www\css\icheckmaster\minimal\_all.css" />
+    <Content Include="assets\www\css\icheckmaster\polaris\polaris%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\polaris\polaris.css" />
+    <Content Include="assets\www\css\icheckmaster\polaris\polaris.png" />
+    <Content Include="assets\www\css\icheckmaster\square\aero%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\square\aero.css" />
+    <Content Include="assets\www\css\icheckmaster\square\aero.png" />
+    <Content Include="assets\www\css\icheckmaster\square\blue%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\square\blue.css" />
+    <Content Include="assets\www\css\icheckmaster\square\blue.png" />
+    <Content Include="assets\www\css\icheckmaster\square\green%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\square\green.css" />
+    <Content Include="assets\www\css\icheckmaster\square\green.png" />
+    <Content Include="assets\www\css\icheckmaster\square\grey%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\square\grey.css" />
+    <Content Include="assets\www\css\icheckmaster\square\grey.png" />
+    <Content Include="assets\www\css\icheckmaster\square\orange%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\square\orange.css" />
+    <Content Include="assets\www\css\icheckmaster\square\orange.png" />
+    <Content Include="assets\www\css\icheckmaster\square\pink%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\square\pink.css" />
+    <Content Include="assets\www\css\icheckmaster\square\pink.png" />
+    <Content Include="assets\www\css\icheckmaster\square\purple%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\square\purple.css" />
+    <Content Include="assets\www\css\icheckmaster\square\purple.png" />
+    <Content Include="assets\www\css\icheckmaster\square\red%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\square\red.css" />
+    <Content Include="assets\www\css\icheckmaster\square\red.png" />
+    <Content Include="assets\www\css\icheckmaster\square\square%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\square\square.css" />
+    <Content Include="assets\www\css\icheckmaster\square\square.png" />
+    <Content Include="assets\www\css\icheckmaster\square\yellow%402x.png" />
+    <Content Include="assets\www\css\icheckmaster\square\yellow.css" />
+    <Content Include="assets\www\css\icheckmaster\square\yellow.png" />
+    <Content Include="assets\www\css\icheckmaster\square\_all.css" />
+    <Content Include="assets\www\css\images\ajax-loader.gif" />
+    <Content Include="assets\www\css\images\icons-18-black.png" />
+    <Content Include="assets\www\css\images\icons-18-white.png" />
+    <Content Include="assets\www\css\images\icons-36-black.png" />
+    <Content Include="assets\www\css\images\icons-36-white.png" />
+    <Content Include="assets\www\css\iscroll\jquery.mobile.iscrollview-pull.css" />
+    <Content Include="assets\www\css\iscroll\jquery.mobile.iscrollview.css" />
+    <Content Include="assets\www\css\jquery-bubble-popup-v3.css" />
+    <Content Include="assets\www\css\jquery.mobile-1.3.1.min.css" />
+    <Content Include="assets\www\css\jquery.mobile.simpledialog.css" />
+    <Content Include="assets\www\css\mobile neu.css" />
+    <Content Include="assets\www\css\mobile.css" />
+    <Content Include="assets\www\directory.js" />
+    <Content Include="assets\www\functions.js" />
+    <Content Include="assets\www\images\fileIcons\green\arne.jpg" />
+    <Content Include="assets\www\images\fileIcons\green\benni.jpg" />
+    <Content Include="assets\www\images\fileIcons\green\christoph.jpg" />
+    <Content Include="assets\www\images\fileIcons\green\code.svg" />
+    <Content Include="assets\www\images\fileIcons\green\compressed_2.svg" />
+    <Content Include="assets\www\images\fileIcons\green\david.jpg" />
+    <Content Include="assets\www\images\fileIcons\green\docx.svg" />
+    <Content Include="assets\www\images\fileIcons\green\file.svg" />
+    <Content Include="assets\www\images\fileIcons\green\folder.svg" />
+    <Content Include="assets\www\images\fileIcons\green\gif.svg" />
+    <Content Include="assets\www\images\fileIcons\green\image.svg" />
+    <Content Include="assets\www\images\fileIcons\green\jannik.jpg" />
+    <Content Include="assets\www\images\fileIcons\green\log.svg" />
+    <Content Include="assets\www\images\fileIcons\green\mail.svg" />
+    <Content Include="assets\www\images\fileIcons\green\music.svg" />
+    <Content Include="assets\www\images\fileIcons\green\oxps.svg" />
+    <Content Include="assets\www\images\fileIcons\green\patrick.jpg" />
+    <Content Include="assets\www\images\fileIcons\green\pdf.svg" />
+    <Content Include="assets\www\images\fileIcons\green\ppt.svg" />
+    <Content Include="assets\www\images\fileIcons\green\pptx.svg" />
+    <Content Include="assets\www\images\fileIcons\green\simon.jpg" />
+    <Content Include="assets\www\images\fileIcons\green\tassilo.jpg" />
+    <Content Include="assets\www\images\fileIcons\green\txt.svg" />
+    <Content Include="assets\www\images\fileIcons\green\unknown.svg" />
+    <Content Include="assets\www\images\fileIcons\green\video.svg" />
+    <Content Include="assets\www\images\fileIcons\green\videoFile.svg" />
+    <Content Include="assets\www\images\fileIcons\green\visio.svg" />
+    <Content Include="assets\www\images\fileIcons\green\word.svg" />
+    <Content Include="assets\www\images\fileIcons\green\xls.svg" />
+    <Content Include="assets\www\images\fileIcons\green\xlsx.svg" />
+    <Content Include="assets\www\images\fileIcons\green\xps.svg" />
+    <Content Include="assets\www\images\fileIcons\green\zip.svg" />
+    <Content Include="assets\www\images\white\delete.png" />
+    <Content Include="assets\www\images\white\download.png" />
+    <Content Include="assets\www\images\white\history.png" />
+    <Content Include="assets\www\images\white\logout.png" />
+    <Content Include="assets\www\images\white\move.png" />
+    <Content Include="assets\www\images\white\rename.png" />
+    <Content Include="assets\www\images\white\restore.png" />
+    <Content Include="assets\www\images\white\share.png" />
+    <Content Include="assets\www\images\white\upload.png" />
+    <Content Include="assets\www\index.html" />
+    <Content Include="assets\www\index2.html" />
+    <Content Include="assets\www\js\plugins\Blob.js" />
+    <Content Include="assets\www\js\plugins\BlobBuilder.js" />
+    <Content Include="assets\www\js\plugins\FileSaver.js" />
+    <Content Include="assets\www\js\plugins\iscroll\ender.js" />
+    <Content Include="assets\www\js\plugins\iscroll\iscroll.js" />
+    <Content Include="assets\www\js\plugins\jquery.mobile-1.3.1.min.js" />
+    <Content Include="assets\www\js\plugins\jquery.mobile.simpledialog2.js" />
+    <Content Include="assets\www\js\plugins\iscroll\iscroll-pull-icon%402x.png" />
+    <Content Include="assets\www\js\plugins\iscroll\jquery.mobile.iscrollview-closure-min.js" />
+    <Content Include="assets\www\js\plugins\iscroll\jquery.mobile.iscrollview-yui-min.js" />
+    <Content Include="assets\www\js\plugins\iscroll\jquery.mobile.iscrollview.js" />
+    <Content Include="assets\www\js\plugins\phonegap-desktop.js" />
+    <Content Include="assets\www\js\wormhole.js" />
+    <Content Include="assets\www\lib\js\interface\backendDummy.js" />
+    <Content Include="assets\www\lib\js\interface\backendInterface.js" />
+    <Content Include="assets\www\lib\js\interface\backendOwncloud.js" />
+    <Content Include="assets\www\lib\js\interface\backendSharepoint.js" />
+    <Content Include="assets\www\lib\js\interface\frontendDummy.js" />
+    <Content Include="assets\www\lib\js\interface\frontendInterface.js" />
+    <Content Include="assets\www\lib\js\interface\frontendProduction.js" />
+    <Content Include="assets\www\lib\js\interface\interface.js" />
+    <Content Include="assets\www\lib\js\lang\de-de.js" />
+    <Content Include="assets\www\lib\js\lang\en-us.js" />
+    <Content Include="assets\www\lib\js\logic\helper.js" />
+    <Content Include="assets\www\lib\js\logic\keyboard.js" />
+    <Content Include="assets\www\lib\js\logic\translator.js" />
+    <Content Include="assets\www\lib\js\plugins\base64.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\.gitattributes" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\.gitignore" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\.travis.yml" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\comment\comment.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\dialog\dialog.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\dialog\dialog.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\display\placeholder.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\edit\closebrackets.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\edit\closetag.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\edit\continuecomment.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\edit\continuelist.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\edit\matchbrackets.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\fold\brace-fold.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\fold\foldcode.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\fold\indent-fold.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\fold\xml-fold.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\hint\html-hint.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\hint\javascript-hint.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\hint\pig-hint.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\hint\python-hint.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\hint\show-hint.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\hint\show-hint.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\hint\xml-hint.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\lint\javascript-lint.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\lint\json-lint.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\lint\lint.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\lint\lint.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\mode\loadmode.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\mode\multiplex.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\mode\overlay.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\runmode\colorize.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\runmode\runmode-standalone.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\runmode\runmode.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\runmode\runmode.node.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\search\match-highlighter.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\search\search.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\search\searchcursor.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\selection\active-line.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\addon\selection\mark-selection.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\CONTRIBUTING.md" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\keymap\emacs.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\keymap\vim.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\lib\codemirror.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\lib\codemirror.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\LICENSE" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\LICENSE-codemirror-R" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\LICENSE-codemirror-ruby" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\apl\apl.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\apl\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\asterisk\asterisk.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\asterisk\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\clike\clike.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\clike\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\clike\scala.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\clojure\clojure.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\clojure\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\cobol\cobol.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\cobol\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\coffeescript\coffeescript.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\coffeescript\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\coffeescript\LICENSE" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\commonlisp\commonlisp.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\commonlisp\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\css\css.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\css\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\css\scss.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\css\scss_test.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\css\test.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\diff\diff.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\diff\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\d\d.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\d\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\ecl\ecl.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\ecl\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\erlang\erlang.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\erlang\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\gas\gas.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\gas\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\gfm\gfm.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\gfm\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\gfm\test.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\go\go.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\go\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\groovy\groovy.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\groovy\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\haml\haml.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\haml\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\haml\test.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\haskell\haskell.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\haskell\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\haxe\haxe.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\haxe\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\htmlembedded\htmlembedded.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\htmlembedded\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\htmlmixed\htmlmixed.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\htmlmixed\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\http\http.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\http\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\javascript\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\javascript\javascript.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\javascript\typescript.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\jinja2\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\jinja2\jinja2.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\less\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\less\less.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\livescript\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\livescript\LICENSE" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\livescript\livescript.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\livescript\livescript.ls" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\lua\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\lua\lua.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\markdown\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\markdown\markdown.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\markdown\test.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\meta.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\mirc\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\mirc\mirc.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\ntriples\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\ntriples\ntriples.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\ocaml\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\ocaml\ocaml.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\pascal\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\pascal\LICENSE" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\pascal\pascal.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\perl\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\perl\LICENSE" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\perl\perl.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\php\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\php\php.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\pig\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\pig\pig.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\properties\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\properties\properties.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\python\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\python\LICENSE.txt" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\python\python.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\q\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\q\q.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\rpm\changes\changes.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\rpm\changes\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\rpm\spec\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\rpm\spec\spec.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\rpm\spec\spec.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\rst\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\rst\LICENSE.txt" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\rst\rst.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\ruby\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\ruby\LICENSE" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\ruby\ruby.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\rust\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\rust\rust.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\r\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\r\LICENSE" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\r\r.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\sass\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\sass\sass.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\scheme\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\scheme\scheme.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\shell\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\shell\shell.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\sieve\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\sieve\LICENSE" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\sieve\sieve.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\smalltalk\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\smalltalk\smalltalk.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\smarty\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\smarty\smarty.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\sparql\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\sparql\sparql.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\sql\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\sql\sql.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\stex\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\stex\stex.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\stex\test.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\tcl\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\tcl\tcl.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\tiddlywiki\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\tiddlywiki\tiddlywiki.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\tiddlywiki\tiddlywiki.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\tiki\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\tiki\tiki.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\tiki\tiki.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\turtle\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\turtle\turtle.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\vbscript\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\vbscript\vbscript.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\vb\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\vb\LICENSE.txt" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\vb\vb.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\velocity\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\velocity\velocity.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\verilog\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\verilog\verilog.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\xml\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\xml\xml.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\xquery\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\xquery\LICENSE" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\xquery\test.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\xquery\xquery.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\yaml\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\yaml\yaml.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\z80\index.html" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\mode\z80\z80.js" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\package.json" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\README.md" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\ambiance-mobile.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\ambiance.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\blackboard.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\cobalt.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\eclipse.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\elegant.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\erlang-dark.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\lesser-dark.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\midnight.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\monokai.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\neat.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\night.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\rubyblue.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\solarized.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\twilight.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\vibrant-ink.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\xq-dark.css" />
+    <Content Include="assets\www\lib\js\plugins\codemirror\theme\xq-light.css" />
+    <Content Include="assets\www\lib\js\plugins\filedownloads.js" />
+    <Content Include="assets\www\lib\js\plugins\jquery-2.0.0.js" />
+    <Content Include="assets\www\lib\js\plugins\jquery.ajaxfileupload.js" />
+    <Content Include="assets\www\lib\js\plugins\jquery.ajaxfileupload.README" />
+    <Content Include="assets\www\lib\js\plugins\jquery.dateFormat-1.0.js" />
+    <Content Include="assets\www\lib\js\plugins\jquery.rest.js" />
+    <Content Include="assets\www\lib\js\plugins\jquery.rest.min.js" />
+    <Content Include="assets\www\lib\js\plugins\jquery.scrollTo-1.4.3.1-min.js" />
+    <Content Include="assets\www\lib\js\plugins\jquery.scrollTo-1.4.3.1.js" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\build\pdf0.8.2.js" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\pdf_old.js" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\compatibility.js" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\compressed.tracemonkey-pldi-09.pdf" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\debugger.js" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\annotation-check.svg" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\annotation-comment.svg" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\annotation-help.svg" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\annotation-insert.svg" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\annotation-key.svg" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\annotation-newparagraph.svg" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\annotation-note.svg" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\annotation-paragraph.svg" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\findbarButton-next-rtl.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\findbarButton-next.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\findbarButton-previous-rtl.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\findbarButton-previous.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\loading-icon.gif" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\loading-small.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\shadow.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\texture.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\toolbarButton-bookmark.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\toolbarButton-download.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\toolbarButton-menuArrows.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\toolbarButton-openFile.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\toolbarButton-pageDown-rtl.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\toolbarButton-pageDown.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\toolbarButton-pageUp-rtl.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\toolbarButton-pageUp.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\toolbarButton-presentationMode.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\toolbarButton-print.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\toolbarButton-search.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\toolbarButton-sidebarToggle.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\toolbarButton-viewOutline.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\toolbarButton-viewThumbnail.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\toolbarButton-zoomIn.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\images\toolbarButton-zoomOut.png" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\l10n.js" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\viewer.css" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\viewer.html" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\generic\web\viewer.js" />
+    <Content Include="assets\www\lib\js\plugins\pdfjs\pdf.js" />
+    <Content Include="assets\www\lib\js\plugins\webdav.js" />
+    <Content Include="assets\www\lib\config\config.js" />
+    <Content Include="assets\www\login.js" />
+    <Content Include="assets\www\main.js" />
+    <Content Include="assets\www\Test.html" />
+    <Content Include="config.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="res\ios\iphone3_splash.png" />
+    <Content Include="res\ios\iphone4_splash.png" />
+    <Content Include="res\ios\iphone5_splash.png" />
+    <Content Include="res\windowsphone.png" />
+    <Content Include="res\drawable-hdpi\ic_launcher.png" />
+    <Content Include="res\drawable-mdpi\ic_launcher.png" />
+    <Content Include="res\drawable-xhdpi\ic_launcher.png" />
+    <Content Include="res\drawable-xxhdpi\ic_launcher.png" />
+    <Content Include="res\ios\iPhoneIcon_Big.png" />
+    <Content Include="res\ios\iPhoneIcon_Medium.png" />
+    <Content Include="res\ios\iPhoneIcon_Small.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
+  <!-- To modify your build process, add your task inside one of the targets below then uncomment
+       that target and the DisableFastUpToDateCheck PropertyGroup. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <PropertyGroup>
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+  </PropertyGroup>
+  -->
+</Project>

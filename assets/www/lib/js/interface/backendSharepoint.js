@@ -1,0 +1,428 @@
+﻿//Backend-Sharepoint
+var backendSharepoint = function () {
+    this.implements = ["Backend"];
+    this.host = false;
+    this.loginStatus = false;
+    this.debugMode = false;
+    this.webdav = false;
+    this.downloadFunction = false;
+    this.uploadFunction = false;
+
+    this.doInit = function (obj) {
+        //Auf Interface-Einhaltung prüfen, sonst wird Fehler generiert
+        InterfaceHelper.ensureImplements(this, Backend);
+
+        this.debug("Backend-Interface: Sharepooint");
+
+        // Verbindunsdetails
+        this.host = obj.host;
+        this.webdav = "/DokumenteApp";
+        this.downloadFunction = obj.downloadFunction;
+        this.uploadFunction = obj.uploadFunction;
+
+        //Konfigurationsdaten
+        this.debugMode = obj.debug;
+
+        return true;
+    };
+
+    this.debug = function (msg) {
+        // Debug-Meldung ausgeben, falls im Debug-Modus
+        if (typeof this.debugMode !== 'undefined' && this.debugMode === true) {
+            console.log(msg.toString());
+        }
+    }
+
+    this.hasFunctionality = function (obj) {
+        console.log("Backend-Funktion hasFunctionality");
+
+        var result = false;
+
+        switch (obj.functionkey) {
+            case "getPublicLink": result = false; break;
+            case "getRemainingSpace": result = false; break;
+            case "getDeletedFiles": result = false; break;
+            case "getFileHistory": result = false; break;
+            default:
+                result = false;
+        }
+
+        return result;
+    };
+
+    this.doAuthentication = function (obj, successCallback, errorCallback) {
+        obj.successCallback = successCallback;
+        obj.errorCallback = errorCallback;
+
+        this.requestToken(obj, this.signIn);
+    };
+
+    this.requestToken = function (obj, callback) {
+        console.log(obj.username + ':' + obj.password);
+
+        var token = this.token;
+
+        $.ajax({
+            'url': 'https://login.microsoftonline.com/extSTS.srf',
+            dataType: 'text',
+            type: 'POST',
+            'data': '<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><s:Header><a:Action s:mustUnderstand="1">http://schemas.xmlsoap.org/ws/2005/02/trust/RST/Issue</a:Action><a:MessageID>urn:uuid:40c1407d-b2a4-4e05-8248-8a92b71102b6</a:MessageID><a:ReplyTo><a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address></a:ReplyTo><a:To s:mustUnderstand="1">https://login.microsoftonline.com/extSTS.srf</a:To><o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><u:Timestamp u:Id="_0"><u:Created>2012-07-26T16:13:00.622Z</u:Created><u:Expires>2012-07-26T16:18:00.622Z</u:Expires></u:Timestamp><o:UsernameToken u:Id="uuid-69882db9-2d6b-45d3-b016-c2156cb6c01d-1"><o:Username>'
+                    + obj.username + '</o:Username><o:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">'
+                    + obj.password + '</o:Password></o:UsernameToken></o:Security></s:Header><s:Body><t:RequestSecurityToken xmlns:t="http://schemas.xmlsoap.org/ws/2005/02/trust"><wsp:AppliesTo xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"><a:EndpointReference><a:Address>https://somethingonline.sharepoint.com/_forms/default.aspx?wa=wsignin1.0</a:Address></a:EndpointReference></wsp:AppliesTo><t:KeyType>http://schemas.xmlsoap.org/ws/2005/05/identity/NoProofKey</t:KeyType><t:RequestType>http://schemas.xmlsoap.org/ws/2005/02/trust/Issue</t:RequestType><t:TokenType>urn:oasis:names:tc:SAML:1.0:assertion</t:TokenType></t:RequestSecurityToken></s:Body></s:Envelope>',
+            headers: {
+                Accept: "application/soap+xml; charset=utf-8"
+            },
+            success: function (result, textStatus, jqXHR) {
+                var xmlDoc = $.parseXML(result);
+                var xml = $(xmlDoc)
+                var binToken = xml.find("BinarySecurityToken").text() || xml.find("wsse\\:BinarySecurityToken").text();
+
+                //Einloggen mit Token
+                token = binToken;
+                obj.token = binToken;
+                callback(obj);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(errorThrown + 'error login:' + jqXHR.responseText);
+
+                obj.errorCallback();
+            }
+        });
+    }
+
+
+    this.signIn = function (obj) {
+        console.log('Start Sharepoint SignIn with token ' + obj.token);
+        $.ajax({
+            'url': 'https://pscloudservices.sharepoint.com/_forms/default.aspx?wa=wsignin1.0',
+            dataType: 'text',
+            type: 'POST',
+            'data': obj.token,
+            headers: {
+                Accept: "application/x-www-form-urlencoded"
+            },
+            success: function (result, textStatus, jqXHR) {
+                var error = /ms-error-header/;
+                if (error.test(jqXHR.responseText)) {
+                    console.log("Error while signing in");
+                    obj.errorCallback();
+                } else {
+                    console.log('SP signin successful');
+                    //TODO: CHRIS PRÜFEN OB FULLSUCCESS HIER RICHTIG IST
+                    obj.successCallback("FULLSUCCESS");
+                } 
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log('error SP signin:' + jqXHR.responseText);
+
+                obj.errorCallback();
+            }
+        });
+    }
+   
+    this.doReAuthentication = function (obj) {
+        //Nothing to do in sharepoint
+        return true;
+    }
+
+    this.isLoggedIn = function (obj) {
+        return this.loginStatus;
+    }
+
+    this.setLoggedIn = function (obj) {
+        if (obj && typeof obj.loginStatus != 'undefined') {
+            this.loginStatus = obj.loginStatus;
+        }
+    }
+
+    this.getDirectoryContent = function (obj, callbackList, errorCallback, frontendContext) {
+        var host = this.host;
+        var debug = this.debug;
+
+        var isRoot = false;
+        if (obj.path == '/') {
+            // TODO müssen wir die Bibliothek variabel halten?
+            // Rootordner enthält Ordner "Forms" der aussortiert werden muss
+            isRoot = true;
+        }
+        this.debug("Get directory for path: " + host + "/_api/web/GetFolderByServerRelativeUrl('" + this.webdav + obj.path + "')/Folders");
+
+        // Files and folders
+        var elems = [];
+        var fileSuccess = false;
+        var folderSuccess = false;
+
+        $.ajax({
+            'url': host + "/_api/web/GetFolderByServerRelativeUrl('" + this.webdav + obj.path + "')/Folders",
+            type: 'GET',
+            headers: {
+                // Accept: "text/html,application/xhtml+xml,application/xml"
+                Accept: "application/json;odata=verbose"
+            },
+            success: function (result, textStatus, jqXHR) {
+                debug('REST request for folders successful');
+                var objects = result.d.results;
+
+                $(objects).each(function (e) {
+                    var child = {
+                        isDir: true,
+                        fileSize: objects[e].Length,
+                        path: objects[e].ServerRelativeUrl.substring(13) //TODO hardcoded
+                    };
+
+                    debug(JSON.stringify(child));
+                    if (isRoot && e == 0) {
+                        //Erstes Element ist "Forms" Ordner, der ausgeblendet werden muss
+                    } else {
+                        elems.push(child);
+                    }
+                });
+
+                if (fileSuccess) {
+                    var callback = callbackList.pop();
+                    callback(elems, callbackList, errorCallback, frontendContext);
+                } else {
+                    folderSuccess = true;
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                debug('error with folders:' + jqXHR.responseText);
+                errorCallback();
+            }
+        });
+
+        //Files
+        $.ajax({
+            'url': host + "/_api/web/GetFolderByServerRelativeUrl('" + this.webdav + obj.path + "')/Files",
+            //  dataType: 'xml',
+            type: 'GET',
+            headers: {
+                // Accept: "text/html,application/xhtml+xml,application/xml"
+                Accept: "application/json;odata=verbose"
+            },
+            success: function (result, textStatus, jqXHR) {
+                debug('REST request for files successful');
+                var objects = result.d.results;
+
+                $(objects).each(function (e) {
+                    var child = {
+                        isDir: false,
+                        fileSize: objects[e].Length,
+                        path: objects[e].ServerRelativeUrl.substring(13) //TODO hardcoded
+                    };
+
+                    debug(JSON.stringify(child));
+                    elems.push(child);
+                });
+
+                if (folderSuccess) {
+                    var callback = callbackList.pop();
+                    callback(elems, callbackList, errorCallback, frontendContext);
+                } else {
+                    fileSuccess = true;
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                debug('error with files:' + jqXHR.responseText);
+                errorCallback();
+            }
+        });
+    }
+    //TODO
+    this.getRemainingSpace = function () {
+        this.debug("Backend-Funktion getRemainingSpace");
+
+        return true;
+    }
+
+    this.deleteObject = function (obj, successCallback, errorCallback) {
+        this.debug("Backend-Funktion deleteObject");
+        this.debug("Delete: " + this.host + this.webdav + obj.path);
+        var debug = this.debug;
+
+        $.ajax({
+            'url': this.host + this.webdav + obj.path,
+            type: 'DELETE',
+            headers: {
+                Accept: "application/json;odata=verbose"
+            },
+            success: function (result, textStatus, jqXHR) {
+                if (jqXHR.status == 204) { //empty success response 
+                    debug('Object deleted');
+                    successCallback();
+                } else {
+                    debug('Object delete failed');
+                    errorCallback();
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                debug('Object deletion failed:' + jqXHR.responseText);
+                errorCallback();
+            }
+        });
+    }
+    
+    this.moveObject = function (obj, successCallback, errorCallback) {
+        this.debug("Backend-Funktion moveObject");
+        this.debug("Move from: " + this.host + this.webdav + obj.srcPath + " TO: " + this.host + this.webdav + obj.srcPath);
+        var debug = this.debug;
+
+        $.ajax({
+            'url': this.host + this.webdav + obj.srcPath,
+            type: 'MOVE',
+            headers: {
+                Accept: "application/json;odata=verbose",
+                Destination: this.host + this.webdav + obj.targetPath
+            },
+            success: function (result, textStatus, jqXHR) {
+                if (jqXHR.status == 201 || jqXHR.status == 204) { // created response || empty success response 
+                    debug('Object moved');
+                    successCallback();
+                } else {
+                    debug('Object move failed');
+                    errorCallback();
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                debug('Object move failed:' + jqXHR.responseText);
+                errorCallback();
+            }
+        });
+    }
+
+    this.createFolder = function (obj, successCallback, errorCallback) {
+        this.debug("Backend-Funktion createFolder");
+        this.debug("Create folder: " + this.host + this.webdav + obj.path + obj.folderName);
+
+        var debug = this.debug;
+        $.ajax({
+            'url': this.host + this.webdav + obj.path + obj.folderName,
+            type: 'MKCOL',
+            headers: {
+                Accept: "application/json;odata=verbose"
+            },
+            success: function (result, textStatus, jqXHR) {
+                if (jqXHR.status == 201) { // success response code
+                    debug('Folder created');
+                    successCallback();
+                } else {
+                    this.debug('Folder creation failed');
+                    errorCallback();
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                debug('Folder creation failed: ' + jqXHR.responseText);
+                errorCallback();
+            }
+        });
+    }
+    
+    this.uploadFile = function (obj, successCallback, errorCallback, file) {
+        this.debug("Backend-Funktion uploadFile");
+
+        this.doReAuthentication({});
+
+        // Fehler, wenn die Funktion nicht gesetzt wurde
+        if (this.uploadFunction) {
+            var param = {
+                path: this.host + this.webdav + obj.targetPath,
+                username: this.username,
+                password: this.password,
+                authToken: this.authToken,
+                fileSize: obj.fileSize
+            };
+
+            this.uploadFunction(param, successCallback, errorCallback, file);
+        } else {
+            errorCallback();
+        }
+    }
+
+    this.downloadFile = function (obj, successCallback, errorCallback, targetFile) {
+        this.debug("Backend-Funktion downloadFile");
+
+        this.doReAuthentication({});
+
+        // Fehler, wenn die Funktion nicht gesetzt wurde
+        if (this.downloadFunction) {
+
+            var param = [];
+            var totalSize = 0;
+            //Mehrere Dateien gleichzeitig
+            for (var i in obj) {
+                param[i] = {
+                    path: this.host + this.webdav + obj[i].dirName,
+                    fileName: obj[i].fileName,
+                    fileType: obj[i].fileType,
+                    username: this.username,
+                    password: this.password,
+                    fileSize: obj[i].fileSize,
+                };
+
+                if (obj[i].fileSize && obj[i].fileSize >= 0) {
+                    totalSize += obj[i].fileSize;
+                }
+            }
+
+            this.downloadFunction(param, successCallback, errorCallback, targetFile, totalSize);
+        } else {
+            errorCallback();
+        }
+    }
+
+    this.getDeletedFiles = function (obj, callbackList, errorCallback, frontendContext) {
+        var callback = callbackList.pop();
+        callback([], callbackList, errorCallback, frontendContext);
+    }
+
+    this.restoreFile = function (obj, successCallback, errorCallback) {
+        errorCallback();
+    }
+
+    this.getVersions = function (obj, successCallback, errorCallback) {
+        errorCallback();
+    }
+
+    this.restoreVersion = function (obj, successCallback, errorCallback) {
+        errorCallback();
+    }
+
+    this.shareObject = function (obj, successCallback, errorCallback) {
+
+    }
+
+    this.getShareLink = function (obj, callbackList, errorCallback, context) {
+
+    }
+
+    this.unshareObject = function (obj, successCallback, errorCallback) {
+
+    }
+
+    this.getShareStatus = function (obj, successCallback, errorCallback) {
+
+    }
+
+    this.getShareAutocomplete = function (obj, callback) {
+        callback({ shareTargets: [] });
+    }
+
+    this.fileeeAnalyse = function (obj, successCallback, errorCallback) {
+
+    }
+
+    this.getFileeeContent = function (obj, successCallback, errorCallback) {
+
+    }
+}
+
+/* var client = new $.RestClient("https://pscloudservices.sharepoint.com/_api/");
+
+ client.add('web');
+
+ var request = client.web.read("GetFolderByServerRelativeUrl('/Dokumente/Kickoff')/Files").always(function (data) {
+     console.log(data);
+     $(data.responseData.results).each(function (index, value) {
+         console.log("Result: " + value.title);
+     });
+ });*/
